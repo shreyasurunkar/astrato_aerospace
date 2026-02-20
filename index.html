@@ -1065,6 +1065,165 @@
 
   .footer-right { font-size: 12px; color: rgba(120,160,190,0.4); text-align: right; }
 
+  /* ─── PASSWORD GATE ─── */
+  #gate {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.6s ease, visibility 0.6s;
+  }
+  #gate.unlocked {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* starfield in gate */
+  #gate-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .gate-box {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .gate-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .gate-logo-mark {
+    width: 40px; height: 40px;
+    background: var(--orange);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  }
+  .gate-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 3px;
+    color: var(--white);
+  }
+  .gate-logo-text span { color: var(--orange); }
+
+  .gate-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 32px;
+  }
+
+  .gate-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .gate-subtitle {
+    font-size: 14px;
+    color: var(--grey);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .gate-input-wrap {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .gate-input {
+    width: 100%;
+    padding: 18px 24px;
+    background: var(--navy-mid);
+    border: 1px solid rgba(27,94,245,0.25);
+    border-radius: 2px;
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .gate-input::placeholder {
+    color: rgba(120,160,190,0.4);
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+  .gate-input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(27,94,245,0.12);
+  }
+  .gate-input.error {
+    border-color: #e05555;
+    box-shadow: 0 0 0 3px rgba(224,85,85,0.12);
+    animation: shake 0.35s ease;
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+  }
+
+  .gate-error {
+    font-size: 12px;
+    color: #e05555;
+    letter-spacing: 1px;
+    min-height: 20px;
+    margin-bottom: 12px;
+    transition: opacity 0.2s;
+  }
+
+  .gate-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--orange);
+    border: none;
+    border-radius: 2px;
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .gate-btn:hover { background: var(--orange-dim); transform: translateY(-1px); }
+  .gate-btn:active { transform: translateY(0); }
+
+  .gate-footer {
+    margin-top: 48px;
+    font-size: 11px;
+    color: rgba(120,160,190,0.3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .gate-divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(27,94,245,0.2);
+    margin: 0 auto 40px;
+  }
+
   /* ─── MOBILE ─── */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
@@ -1092,6 +1251,27 @@
 </style>
 </head>
 <body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <canvas id="gate-canvas"></canvas>
+  <div class="gate-box">
+    <div class="gate-logo">
+      <div class="gate-logo-mark"></div>
+      <span class="gate-logo-text">ASTRATO <span>AEROSPACE</span></span>
+    </div>
+    <div class="gate-label">Confidential Investor Access</div>
+    <h2 class="gate-title">ENTER PASSWORD</h2>
+    <p class="gate-subtitle">This site contains confidential pre-seed investment materials.<br>Please enter your access password to continue.</p>
+    <div class="gate-divider"></div>
+    <div class="gate-input-wrap">
+      <input id="gate-input" class="gate-input" type="password" placeholder="Enter password" autocomplete="off" />
+    </div>
+    <div class="gate-error" id="gate-error"></div>
+    <button class="gate-btn" id="gate-btn" onclick="checkPassword()">Access Site</button>
+    <p class="gate-footer">Astrato Aerospace · Confidential · 2026</p>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -1521,8 +1701,8 @@
     </div>
 
     <div class="raise-actions">
-      <a href="mailto:shreyas@astrataerospace.com" class="btn-primary">Request Investor Pack</a>
-      <a href="mailto:shreyas@astrataerospace.com" class="btn-secondary">Schedule a Call</a>
+      <a href="mailto:urunkar.gp@gmail.com" class="btn-primary">Request Investor Pack</a>
+      <a href="mailto:urunkar.gp@gmail.com" class="btn-secondary">Schedule a Call</a>
     </div>
   </div>
 </section>
@@ -1534,7 +1714,7 @@
     <div class="footer-company">ASTRATO <span>AEROSPACE</span></div>
   </div>
   <div class="footer-center">
-    <a href="mailto:shreyas@astrataerospace.com">shreyas@astrataerospace.com</a><br>
+    <a href="mailto:urunkar.gp@gmail.com">urunkar.gp@gmail.com</a><br>
     <span style="font-size:12px;color:rgba(120,160,190,0.5);margin-top:6px;display:block">
       Confidential — Pre-Seed Investment Opportunity 2026
     </span>
@@ -1546,6 +1726,81 @@
 </footer>
 
 <script>
+// ─── PASSWORD GATE ───
+const CORRECT_PASSWORD = 'Astrato2026';
+
+// Gate starfield
+const gateCanvas = document.getElementById('gate-canvas');
+const gateCtx = gateCanvas.getContext('2d');
+let gateStars = [];
+
+function initGateStarfield() {
+  gateCanvas.width = window.innerWidth;
+  gateCanvas.height = window.innerHeight;
+  gateStars = [];
+  for (let i = 0; i < 200; i++) {
+    gateStars.push({
+      x: Math.random() * gateCanvas.width,
+      y: Math.random() * gateCanvas.height,
+      r: Math.random() * 1.2 + 0.2,
+      alpha: Math.random() * 0.5 + 0.1,
+      speed: Math.random() * 0.3 + 0.05,
+      twinkle: Math.random() * Math.PI * 2,
+    });
+  }
+}
+
+function drawGateStarfield() {
+  gateCtx.clearRect(0, 0, gateCanvas.width, gateCanvas.height);
+  const t = Date.now() * 0.001;
+  for (const s of gateStars) {
+    const a = s.alpha * (0.6 + 0.4 * Math.sin(t * s.speed + s.twinkle));
+    gateCtx.beginPath();
+    gateCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    gateCtx.fillStyle = `rgba(200,220,255,${a})`;
+    gateCtx.fill();
+  }
+  if (!document.getElementById('gate').classList.contains('unlocked')) {
+    requestAnimationFrame(drawGateStarfield);
+  }
+}
+
+initGateStarfield();
+drawGateStarfield();
+window.addEventListener('resize', () => { initGateStarfield(); });
+
+function checkPassword() {
+  const input = document.getElementById('gate-input');
+  const error = document.getElementById('gate-error');
+  const val = input.value.trim();
+
+  if (val === CORRECT_PASSWORD) {
+    // Store in session so refresh doesn't re-lock
+    sessionStorage.setItem('astrato_auth', '1');
+    document.getElementById('gate').classList.add('unlocked');
+    document.body.style.overflow = '';
+    error.textContent = '';
+  } else {
+    input.classList.add('error');
+    error.textContent = 'Incorrect password. Please try again.';
+    input.value = '';
+    setTimeout(() => input.classList.remove('error'), 400);
+  }
+}
+
+// Allow Enter key
+document.getElementById('gate-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') checkPassword();
+});
+
+// Auto-unlock if already authenticated this session
+if (sessionStorage.getItem('astrato_auth') === '1') {
+  document.getElementById('gate').classList.add('unlocked');
+  document.body.style.overflow = '';
+} else {
+  document.body.style.overflow = 'hidden';
+}
+
 // ─── STARFIELD ───
 const canvas = document.getElementById('starfield');
 const ctx = canvas.getContext('2d');
@@ -1618,17 +1873,3 @@ const barObserver = new IntersectionObserver((entries) => {
       e.target.querySelectorAll('.market-bar-fill').forEach(bar => {
         bar.style.width = bar.dataset.width + '%';
       });
-      barObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-const barsSection = document.querySelector('.market-bars');
-if (barsSection) barObserver.observe(barsSection);
-
-// Trigger hero reveal immediately
-setTimeout(() => {
-  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
-}, 200);
-</script>
-</body>
-</html>
