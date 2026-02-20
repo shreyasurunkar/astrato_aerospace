@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrato Aerospace — Stratospheric Intelligence Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #060E1F;
+    --navy-mid: #0D1E3A;
+    --navy-light: #1E3A5A;
+    --blue: #1B5EF5;
+    --blue-bright: #4A90F5;
+    --orange: #F5831E;
+    --orange-dim: #C4661A;
+    --white: #FFFFFF;
+    --grey: #7A9BB5;
+    --grey-light: #B8CED8;
+    --text: #D8E4F0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(6,14,31,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(27,94,245,0.15);
+    transition: padding 0.3s;
+  }
+  nav.scrolled { padding: 14px 60px; }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 36px; height: 36px;
+    background: var(--orange);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  }
+  .nav-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+  .nav-logo-text span { color: var(--orange); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--grey);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 2px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--orange-dim) !important; color: var(--white) !important; }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  #starfield {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .altitude-layers {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 42%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .alt-layer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    border-left: 1px solid rgba(74,144,245,0.15);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(120,160,190,0.5);
+    transition: all 0.3s;
+  }
+  .alt-layer.active {
+    background: rgba(27,94,245,0.12);
+    border-left: 3px solid var(--orange);
+    color: var(--orange);
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .alt-layer.active .alt-label { color: var(--white); }
+  .alt-layer .alt-km {
+    margin-left: auto;
+    color: rgba(120,160,190,0.4);
+    font-size: 10px;
+  }
+  .alt-layer.active .alt-km { color: var(--grey); }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 60px;
+    max-width: 58%;
+    padding-top: 80px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 7vw, 96px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .hero-headline .accent { color: var(--orange); }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--grey-light);
+    font-weight: 300;
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: var(--white);
+    padding: 16px 36px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--orange-dim); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: 16px 36px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--white); color: var(--white); }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 48px;
+    left: 60px;
+    z-index: 2;
+    display: flex;
+    gap: 48px;
+  }
+  .hero-stat {}
+  .hero-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+  .hero-stat-num span { color: var(--orange); }
+  .hero-stat-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey);
+    font-weight: 500;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 48px;
+    right: 60px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--grey);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--orange), transparent);
+    animation: scrollPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* ─── SECTIONS COMMON ─── */
+  section { padding: 120px 60px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 64px);
+    letter-spacing: 2px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .section-desc {
+    font-size: 18px;
+    color: var(--grey-light);
+    font-weight: 300;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 64px;
+  }
+
+  /* ─── REVEAL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── PROBLEM ─── */
+  #problem {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  #problem::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(27,94,245,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(27,94,245,0.1);
+    border: 1px solid rgba(27,94,245,0.15);
+  }
+
+  .problem-card {
+    background: var(--navy);
+    padding: 48px 36px;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .problem-card:hover { background: var(--navy-mid); }
+
+  .problem-icon {
+    font-size: 36px;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .problem-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .problem-body {
+    font-size: 15px;
+    color: var(--grey);
+    line-height: 1.7;
+  }
+
+  .problem-callout {
+    margin-top: 48px;
+    padding: 28px 40px;
+    background: rgba(245,131,30,0.08);
+    border: 1px solid rgba(245,131,30,0.3);
+    border-left: 4px solid var(--orange);
+    font-size: 17px;
+    color: var(--grey-light);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .problem-callout strong { color: var(--orange); font-style: normal; }
+
+  /* ─── SOLUTION ─── */
+  #solution {
+    position: relative;
+  }
+
+  .solution-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .solution-diagram {
+    position: relative;
+    height: 520px;
+    border: 1px solid rgba(27,94,245,0.2);
+    background: var(--navy-mid);
+    overflow: hidden;
+  }
+
+  .diagram-layer {
+    position: absolute;
+    left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(27,94,245,0.1);
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .diagram-layer:hover { background: rgba(27,94,245,0.05); }
+  .diagram-layer.haps {
+    background: rgba(27,94,245,0.15);
+    border: none;
+    border-top: 2px solid var(--orange);
+    border-bottom: 2px solid var(--orange);
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 13px;
+    z-index: 2;
+  }
+  .diagram-layer.haps .dlayer-label { color: var(--white); }
+
+  .dlayer-alt { color: var(--grey); font-size: 11px; margin-left: auto; }
+  .dlayer-label { color: var(--grey); margin-left: 12px; }
+  .diagram-layer.haps .dlayer-alt { color: var(--grey-light); }
+
+  /* position layers vertically */
+  .diagram-layer:nth-child(1) { top: 0; height: 15%; }
+  .diagram-layer:nth-child(2) { top: 15%; height: 12%; }
+  .diagram-layer:nth-child(3) { top: 27%; height: 22%; } /* HAPS */
+  .diagram-layer:nth-child(4) { top: 49%; height: 18%; }
+  .diagram-layer:nth-child(5) { top: 67%; height: 18%; }
+  .diagram-layer:nth-child(6) { top: 85%; height: 15%; }
+
+  .vehicle-dot {
+    position: absolute;
+    right: 50px;
+    top: 30%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: var(--orange);
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px rgba(245,131,30,0.15), 0 0 0 16px rgba(245,131,30,0.07);
+    animation: vehiclePulse 2.5s ease-in-out infinite;
+    z-index: 3;
+  }
+  @keyframes vehiclePulse {
+    0%, 100% { box-shadow: 0 0 0 8px rgba(245,131,30,0.15), 0 0 0 16px rgba(245,131,30,0.07); }
+    50% { box-shadow: 0 0 0 12px rgba(245,131,30,0.2), 0 0 0 24px rgba(245,131,30,0.05); }
+  }
+
+  .coverage-arc {
+    position: absolute;
+    right: 20px;
+    top: 20%;
+    width: 120px;
+    height: 240px;
+    border-left: 2px dashed rgba(245,131,30,0.3);
+    border-radius: 50% 0 0 50%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .solution-features { list-style: none; }
+  .solution-feature {
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(27,94,245,0.1);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .solution-feature:first-child { padding-top: 0; }
+
+  .feature-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: rgba(27,94,245,0.3);
+    line-height: 1;
+    min-width: 44px;
+    transition: color 0.3s;
+  }
+  .solution-feature:hover .feature-num { color: var(--blue); }
+
+  .feature-body {}
+  .feature-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+  .feature-desc {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.65;
+  }
+
+  /* ─── USE CASES ─── */
+  #usecases {
+    background: var(--navy-mid);
+    position: relative;
+    overflow: hidden;
+  }
+  #usecases::after {
+    content: '';
+    position: absolute;
+    bottom: -300px; left: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(245,131,30,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .usecase-card {
+    background: var(--navy);
+    border: 1px solid rgba(27,94,245,0.12);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.2s;
+    cursor: default;
+  }
+  .usecase-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent-color, var(--blue));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .usecase-card:hover { border-color: rgba(27,94,245,0.35); transform: translateY(-3px); }
+  .usecase-card:hover::before { transform: scaleX(1); }
+
+  .usecase-card.orange { --accent-color: var(--orange); }
+  .usecase-card.green { --accent-color: #2CB67D; }
+  .usecase-card.blue { --accent-color: var(--blue); }
+
+  .usecase-icon { font-size: 40px; margin-bottom: 20px; display: block; }
+
+  .usecase-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-bottom: 16px;
+    border-radius: 2px;
+  }
+  .orange .usecase-tag { background: rgba(245,131,30,0.15); color: var(--orange); }
+  .green .usecase-tag { background: rgba(44,182,125,0.15); color: #2CB67D; }
+  .blue .usecase-tag { background: rgba(27,94,245,0.15); color: var(--blue-bright); }
+
+  .usecase-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.1;
+  }
+
+  .usecase-body {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .usecase-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .usecase-list li {
+    font-size: 13px;
+    color: var(--grey-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .usecase-list li::before {
+    content: '→';
+    color: var(--accent-color, var(--blue));
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  #how {
+    position: relative;
+  }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 60px;
+  }
+  .how-steps::before {
+    content: '';
+    position: absolute;
+    top: 32px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--blue), var(--orange), var(--blue), transparent);
+    z-index: 0;
+  }
+
+  .how-step {
+    text-align: center;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--navy-mid);
+    border: 2px solid var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--blue);
+    letter-spacing: 1px;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+  }
+  .how-step:hover .step-circle {
+    background: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
+  }
+
+  .step-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+  }
+
+  .step-body {
+    font-size: 13px;
+    color: var(--grey);
+    line-height: 1.65;
+  }
+
+  /* ─── MARKET / NUMBERS ─── */
+  #numbers {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+    border-top: 1px solid rgba(27,94,245,0.15);
+    border-bottom: 1px solid rgba(27,94,245,0.15);
+  }
+
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .numbers-left {}
+  .stat-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(27,94,245,0.1);
+    margin-top: 48px;
+  }
+  .stat-block {
+    background: var(--navy-mid);
+    padding: 36px 28px;
+    transition: background 0.3s;
+  }
+  .stat-block:hover { background: #142A4A; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 1px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-num .accent { color: var(--orange); }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .stat-sub {
+    font-size: 13px;
+    color: var(--grey);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .numbers-right {}
+  .market-bars {}
+  .market-bar-item {
+    margin-bottom: 24px;
+  }
+  .market-bar-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .market-bar-label { font-size: 14px; color: var(--grey-light); font-weight: 500; }
+  .market-bar-val { font-size: 14px; color: var(--white); font-weight: 700; }
+
+  .market-bar-track {
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .market-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .market-bar-fill.orange { background: var(--orange); }
+  .market-bar-fill.blue { background: var(--blue); }
+  .market-bar-fill.mid { background: var(--blue-bright); }
+  .market-bar-fill.light { background: rgba(74,144,245,0.5); }
+  .market-bar-fill.faint { background: rgba(74,144,245,0.3); }
+
+  .market-source {
+    margin-top: 36px;
+    font-size: 12px;
+    color: var(--grey);
+    font-style: italic;
+  }
+
+  /* ─── WHY NOW ─── */
+  #whynow {
+    position: relative;
+    overflow: hidden;
+  }
+  #whynow::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(27,94,245,0.03), transparent);
+    pointer-events: none;
+  }
+
+  .whynow-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .whynow-card {
+    padding: 40px;
+    background: var(--navy-mid);
+    border: 1px solid rgba(27,94,245,0.1);
+    border-left: 4px solid;
+    transition: transform 0.2s;
+  }
+  .whynow-card:hover { transform: translateX(4px); }
+  .whynow-card:nth-child(1) { border-left-color: var(--orange); }
+  .whynow-card:nth-child(2) { border-left-color: var(--blue); }
+  .whynow-card:nth-child(3) { border-left-color: var(--blue-bright); }
+  .whynow-card:nth-child(4) { border-left-color: #2CB67D; }
+
+  .whynow-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    margin-bottom: -16px;
+  }
+
+  .whynow-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+  }
+
+  .whynow-body {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.7;
+  }
+
+  /* ─── TEAM ─── */
+  #team {
+    background: var(--navy-mid);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: rgba(27,94,245,0.1);
+    margin-bottom: 48px;
+  }
+
+  .team-card {
+    background: var(--navy);
+    padding: 36px 28px;
+    transition: background 0.3s;
+  }
+  .team-card:hover { background: var(--navy-mid); }
+
+  .team-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+    border: 2px solid rgba(27,94,245,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--blue-bright);
+    margin-bottom: 20px;
+  }
+
+  .team-role {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+
+  .team-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .team-bio {
+    font-size: 13px;
+    color: var(--grey);
+    line-height: 1.65;
+  }
+
+  .team-advisors {
+    padding: 32px 40px;
+    background: rgba(27,94,245,0.06);
+    border: 1px solid rgba(27,94,245,0.15);
+  }
+  .advisors-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 16px;
+  }
+  .advisors-list {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  .advisors-list li {
+    font-size: 14px;
+    color: var(--grey-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .advisors-list li::before {
+    content: '◆';
+    font-size: 8px;
+    color: var(--blue);
+  }
+
+  /* ─── INVESTORS ─── */
+  #investors {
+    position: relative;
+    text-align: center;
+  }
+
+  .raise-box {
+    max-width: 860px;
+    margin: 0 auto;
+    border: 1px solid rgba(245,131,30,0.3);
+    padding: 64px;
+    position: relative;
+    background: linear-gradient(135deg, rgba(245,131,30,0.04), transparent);
+  }
+  .raise-box::before, .raise-box::after {
+    content: '';
+    position: absolute;
+    width: 20px; height: 20px;
+    border-color: var(--orange);
+    border-style: solid;
+  }
+  .raise-box::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+  .raise-box::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+  .raise-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 9vw, 120px);
+    letter-spacing: 3px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .raise-desc {
+    font-size: 16px;
+    color: var(--grey);
+    margin-bottom: 48px;
+    letter-spacing: 1px;
+  }
+  .raise-desc span { color: var(--orange); margin: 0 8px; }
+
+  .raise-terms {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    margin-bottom: 48px;
+    text-align: left;
+  }
+  .raise-term {
+    background: var(--navy);
+    padding: 24px 28px;
+  }
+  .raise-term-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 8px;
+  }
+  .raise-term-val {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .raise-milestones {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+    text-align: left;
+    flex-wrap: wrap;
+  }
+  .raise-milestone {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .milestone-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .milestone-text {
+    font-size: 14px;
+    color: var(--grey-light);
+    line-height: 1.5;
+  }
+
+  .raise-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #020912;
+    padding: 48px 60px;
+    border-top: 1px solid rgba(27,94,245,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+    gap: 24px;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .footer-logo-mark {
+    width: 28px; height: 28px;
+    background: var(--orange);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    flex-shrink: 0;
+  }
+  .footer-company {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+  .footer-company span { color: var(--orange); }
+
+  .footer-center {
+    font-size: 13px;
+    color: var(--grey);
+    text-align: center;
+  }
+  .footer-center a { color: var(--orange); text-decoration: none; }
+
+  .footer-right { font-size: 12px; color: rgba(120,160,190,0.4); text-align: right; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    .hero-content { max-width: 100%; padding: 0 24px; padding-top: 100px; }
+    .altitude-layers { display: none; }
+    .hero-stats { left: 24px; gap: 28px; bottom: 32px; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .solution-layout { grid-template-columns: 1fr; }
+    .solution-diagram { height: 320px; }
+    .usecases-grid { grid-template-columns: 1fr; }
+    .how-steps { grid-template-columns: 1fr 1fr; }
+    .numbers-grid { grid-template-columns: 1fr; }
+    .stat-blocks { grid-template-columns: 1fr 1fr; }
+    .whynow-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .raise-box { padding: 36px 24px; }
+    .raise-terms { grid-template-columns: 1fr; }
+    .raise-actions { flex-direction: column; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-right { text-align: center; }
+    .how-steps::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark"></div>
+    <span class="nav-logo-text">ASTRATO <span>AEROSPACE</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#usecases">Applications</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#investors" class="nav-cta">Invest</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="starfield"></canvas>
+
+  <div class="altitude-layers">
+    <div class="alt-layer"><span>SPACE</span><span class="dlayer-label">LEO Satellites</span><span class="alt-km">&gt;100km</span></div>
+    <div class="alt-layer"><span>NEAR SPACE</span><span class="dlayer-label">Balloons</span><span class="alt-km">20–100km</span></div>
+    <div class="alt-layer haps"><span>▶ HAPS ZONE</span><span class="alt-label">Astrato Operates Here</span><span class="alt-km">18–50km</span></div>
+    <div class="alt-layer"><span>UPPER ATM</span><span class="dlayer-label">High-alt jets</span><span class="alt-km">10–18km</span></div>
+    <div class="alt-layer"><span>TROPOSPHERE</span><span class="dlayer-label">Drones, aircraft</span><span class="alt-km">0–10km</span></div>
+    <div class="alt-layer"><span>GROUND</span><span class="dlayer-label">Infrastructure</span><span class="alt-km">0km</span></div>
+  </div>
+
+  <div class="hero-content reveal">
+    <p class="hero-eyebrow">Stratospheric Intelligence Platform</p>
+    <h1 class="hero-headline">
+      THE STRATOSPHERE<br>
+      WAS <span class="accent">EMPTY.</span><br>
+      NOT ANYMORE.
+    </h1>
+    <p class="hero-sub">Astrato Aerospace builds autonomous aircraft that fly at 20km altitude — above weather, below satellites — delivering persistent surveillance and communications for Australia and its allies.</p>
+    <div class="hero-actions">
+      <a href="#investors" class="btn-primary">View Investment Opportunity</a>
+      <a href="#solution" class="btn-secondary">How It Works</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">30<span>+</span></div>
+      <div class="hero-stat-label">Days Airborne</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">20<span>km</span></div>
+      <div class="hero-stat-label">Altitude</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">$41<span>B</span></div>
+      <div class="hero-stat-label">Market by 2030</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <p class="section-label reveal">The Gap</p>
+  <h2 class="section-title reveal reveal-delay-1">THREE TECHNOLOGIES.<br>ALL FAILING.</h2>
+  <p class="section-desc reveal reveal-delay-2">Governments across the Indo-Pacific need persistent, real-time intelligence over vast distances. Today, nothing delivers it. Satellites are too high. Drones are too low. And the stratosphere between them sits completely empty.</p>
+
+  <div class="problem-grid">
+    <div class="problem-card reveal">
+      <span class="problem-icon">🛰️</span>
+      <h3 class="problem-title">Satellites miss the moment</h3>
+      <p class="problem-body">A satellite passes over any given location for just minutes at a time. With 90-minute revisit gaps, entire crises unfold invisibly. You cannot stare at a border zone from space.</p>
+    </div>
+    <div class="problem-card reveal reveal-delay-1">
+      <span class="problem-icon">🚁</span>
+      <h3 class="problem-title">Drones can't reach high enough</h3>
+      <p class="problem-body">Military UAVs max out at 15km. Weather grounds them. Endurance tops at 48 hours. They require active pilots around the clock and can't legally enter sovereign airspace unannounced.</p>
+    </div>
+    <div class="problem-card reveal reveal-delay-2">
+      <span class="problem-icon">⚠️</span>
+      <h3 class="problem-title">No persistent reconfigurable layer</h3>
+      <p class="problem-body">When a cyclone hits, a border incursion begins, or a vessel goes dark in Australian waters, you need a response in hours — not the 18 months it takes to commission a new satellite.</p>
+    </div>
+  </div>
+
+  <div class="problem-callout reveal">
+    <strong>The stratosphere — 18 to 50km altitude — has been empty for 70 years.</strong> It is the only untapped layer of Earth's atmosphere. The technology to exploit it finally exists. Astrato is first.
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <p class="section-label reveal">The Solution</p>
+  <h2 class="section-title reveal reveal-delay-1">AUTONOMOUS.<br>PERSISTENT.<br>STRATOSPHERIC.</h2>
+
+  <div class="solution-layout">
+    <div class="solution-diagram reveal">
+      <div class="diagram-layer"><span>SPACE</span><span class="dlayer-label">LEO Satellites</span><span class="dlayer-alt">&gt;100km</span></div>
+      <div class="diagram-layer"><span>NEAR SPACE</span><span class="dlayer-label">Weather balloons</span><span class="dlayer-alt">20–100km</span></div>
+      <div class="diagram-layer haps">
+        <span>▶ HAPS ZONE</span>
+        <span class="dlayer-label" style="color:var(--orange);font-weight:700">Astrato Operates Here</span>
+        <span class="dlayer-alt">18–50km</span>
+      </div>
+      <div class="diagram-layer"><span>UPPER ATM</span><span class="dlayer-label">Commercial jets</span><span class="dlayer-alt">10–18km</span></div>
+      <div class="diagram-layer"><span>TROPOSPHERE</span><span class="dlayer-label">Drones, aircraft</span><span class="dlayer-alt">0–10km</span></div>
+      <div class="diagram-layer"><span>GROUND</span><span class="dlayer-label">Infrastructure</span><span class="dlayer-alt">0km</span></div>
+      <div class="vehicle-dot"></div>
+      <div class="coverage-arc"></div>
+    </div>
+
+    <ul class="solution-features reveal reveal-delay-2">
+      <li class="solution-feature">
+        <span class="feature-num">01</span>
+        <div class="feature-body">
+          <h3 class="feature-title">Fully Autonomous Flight</h3>
+          <p class="feature-desc">Our aircraft fly for 30+ days without a human pilot. AI-driven station-keeping holds position over any coordinate — day and night, through solar cycles — without ground intervention.</p>
+        </div>
+      </li>
+      <li class="solution-feature">
+        <span class="feature-num">02</span>
+        <div class="feature-body">
+          <h3 class="feature-title">Solar-Electric Endurance</h3>
+          <p class="feature-desc">Next-generation perovskite-silicon solar panels provide all-day power. Onboard batteries sustain night operations. Zero fuel. Zero emissions. Indefinite patrol.</p>
+        </div>
+      </li>
+      <li class="solution-feature">
+        <span class="feature-num">03</span>
+        <div class="feature-body">
+          <h3 class="feature-title">Swappable Sensor Payload</h3>
+          <p class="feature-desc">Modular payload bay carries EO/IR cameras, SAR radar, SIGINT antennas, or comms relays. One aircraft, any mission. Reconfigured on the ground in under an hour.</p>
+        </div>
+      </li>
+      <li class="solution-feature">
+        <span class="feature-num">04</span>
+        <div class="feature-body">
+          <h3 class="feature-title">Onboard Edge AI Processing</h3>
+          <p class="feature-desc">Intelligence stays onboard. The aircraft detects, classifies, and prioritises targets in real-time. Only actionable intelligence reaches the ground — encrypted and verified.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="usecases">
+  <p class="section-label reveal">Applications</p>
+  <h2 class="section-title reveal reveal-delay-1">BUILT FOR<br>AUSTRALIA'S NEEDS</h2>
+  <p class="section-desc reveal reveal-delay-2">Three core markets, each with urgent unmet demand and government-backed budgets to pay for a solution.</p>
+
+  <div class="usecases-grid">
+    <div class="usecase-card orange reveal">
+      <span class="usecase-icon">🛡️</span>
+      <span class="usecase-tag">Defence & Intelligence</span>
+      <h3 class="usecase-title">Persistent ISR for the ADF</h3>
+      <p class="usecase-body">Continuous surveillance over Northern Australia, the Torres Strait, and Indo-Pacific maritime corridors. No pilot. No flight manifest. Always watching.</p>
+      <ul class="usecase-list">
+        <li>Border and maritime patrol 24/7</li>
+        <li>Real-time intelligence for ADF operations</li>
+        <li>AUKUS interoperability with Five Eyes partners</li>
+        <li>Comms relay in denied environments</li>
+      </ul>
+    </div>
+
+    <div class="usecase-card green reveal reveal-delay-1">
+      <span class="usecase-icon">🌾</span>
+      <span class="usecase-tag">Commercial</span>
+      <h3 class="usecase-title">Agricultural & Environmental Monitoring</h3>
+      <p class="usecase-body">One aircraft covers the area of an entire state. Crop health, water stress, livestock movement, and flood mapping — all from 20km up, updated continuously.</p>
+      <ul class="usecase-list">
+        <li>Precision agriculture at continental scale</li>
+        <li>Bushfire detection and perimeter tracking</li>
+        <li>Great Barrier Reef and coastal monitoring</li>
+        <li>Infrastructure inspection across remote Australia</li>
+      </ul>
+    </div>
+
+    <div class="usecase-card blue reveal reveal-delay-2">
+      <span class="usecase-icon">📡</span>
+      <span class="usecase-tag">Connectivity</span>
+      <h3 class="usecase-title">Sovereign Connectivity Infrastructure</h3>
+      <p class="usecase-body">A stratospheric relay station that brings broadband to remote communities, disaster zones, and vessels at sea — without depending on foreign satellite infrastructure.</p>
+      <ul class="usecase-list">
+        <li>Remote community broadband coverage</li>
+        <li>Emergency comms when ground infrastructure fails</li>
+        <li>Maritime and aviation connectivity</li>
+        <li>Sovereign, Australian-controlled network</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <p class="section-label reveal">How It Works</p>
+  <h2 class="section-title reveal reveal-delay-1">FROM GROUND TO<br>STRATOSPHERE IN 4 STEPS</h2>
+
+  <div class="how-steps">
+    <div class="how-step reveal">
+      <div class="step-circle">01</div>
+      <h3 class="step-title">Launch</h3>
+      <p class="step-body">The aircraft takes off from a standard runway. No special infrastructure. Reaches 20km altitude within hours under its own power.</p>
+    </div>
+    <div class="how-step reveal reveal-delay-1">
+      <div class="step-circle">02</div>
+      <h3 class="step-title">Station-Keep</h3>
+      <p class="step-body">Onboard AI holds the aircraft over a precise coordinate — automatically adjusting to stratospheric wind patterns, with no ground crew needed.</p>
+    </div>
+    <div class="how-step reveal reveal-delay-2">
+      <div class="step-circle">03</div>
+      <h3 class="step-title">Sense & Process</h3>
+      <p class="step-body">Sensors scan the area below. Edge AI processes imagery and signals onboard, extracting intelligence before transmitting anything to the ground.</p>
+    </div>
+    <div class="how-step reveal reveal-delay-3">
+      <div class="step-circle">04</div>
+      <h3 class="step-title">Deliver</h3>
+      <p class="step-body">Encrypted, actionable intelligence reaches operators in real-time. Decisions are made in minutes, not hours. The aircraft keeps flying.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section id="numbers">
+  <div class="numbers-grid">
+    <div class="numbers-left">
+      <p class="section-label reveal">The Opportunity</p>
+      <h2 class="section-title reveal reveal-delay-1">A MARKET THAT<br>CAN'T WAIT</h2>
+      <p class="section-desc reveal reveal-delay-2" style="margin-bottom:0">Australia's 2023 Defence Strategic Review mandated a historic investment in autonomous capabilities. The ADF has the budget. Astrato has the technology. There is no other Australian stratospheric ISR company.</p>
+
+      <div class="stat-blocks reveal reveal-delay-3">
+        <div class="stat-block">
+          <div class="stat-num">$41<span class="accent">B</span></div>
+          <div class="stat-label">Global HAPS Market 2030</div>
+          <div class="stat-sub">Frost & Sullivan, 2025</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">$330<span class="accent">B</span></div>
+          <div class="stat-label">ADF 10-Year Commitment</div>
+          <div class="stat-sub">Defence Strategic Review 2023</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">$5<span class="accent">–15M</span></div>
+          <div class="stat-label">Revenue Per Aircraft Per Year</div>
+          <div class="stat-sub">Government ISR contracts</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">65<span class="accent">%+</span></div>
+          <div class="stat-label">Gross Margin at Scale</div>
+          <div class="stat-sub">Software & data revenue layer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="numbers-right reveal reveal-delay-2">
+      <p class="section-label" style="margin-bottom:32px">2030 Market by Segment</p>
+      <div class="market-bars">
+        <div class="market-bar-item">
+          <div class="market-bar-top">
+            <span class="market-bar-label">Defence ISR & Surveillance</span>
+            <span class="market-bar-val">$18B</span>
+          </div>
+          <div class="market-bar-track"><div class="market-bar-fill orange" data-width="100"></div></div>
+        </div>
+        <div class="market-bar-item">
+          <div class="market-bar-top">
+            <span class="market-bar-label">Government Earth Observation</span>
+            <span class="market-bar-val">$9B</span>
+          </div>
+          <div class="market-bar-track"><div class="market-bar-fill blue" data-width="50"></div></div>
+        </div>
+        <div class="market-bar-item">
+          <div class="market-bar-top">
+            <span class="market-bar-label">Sovereign Connectivity</span>
+            <span class="market-bar-val">$7B</span>
+          </div>
+          <div class="market-bar-track"><div class="market-bar-fill mid" data-width="39"></div></div>
+        </div>
+        <div class="market-bar-item">
+          <div class="market-bar-top">
+            <span class="market-bar-label">Commercial Agriculture & Infra</span>
+            <span class="market-bar-val">$4B</span>
+          </div>
+          <div class="market-bar-track"><div class="market-bar-fill light" data-width="22"></div></div>
+        </div>
+        <div class="market-bar-item">
+          <div class="market-bar-top">
+            <span class="market-bar-label">Spectrum / EW / Comms Relay</span>
+            <span class="market-bar-val">$3B</span>
+          </div>
+          <div class="market-bar-track"><div class="market-bar-fill faint" data-width="17"></div></div>
+        </div>
+      </div>
+      <p class="market-source">Source: Frost & Sullivan, MarketsandMarkets, internal analysis (2025)</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section id="whynow">
+  <p class="section-label reveal">Why Now</p>
+  <h2 class="section-title reveal reveal-delay-1">FOUR TAILWINDS<br>CONVERGING IN 2026</h2>
+
+  <div class="whynow-grid">
+    <div class="whynow-card reveal">
+      <div class="whynow-num">01</div>
+      <h3 class="whynow-title">Australian Defence Investment at Historic Highs</h3>
+      <p class="whynow-body">Australia's 2023 Defence Strategic Review mandated a $330B+ ten-year investment. AUKUS Pillar 2 commits billions specifically to advanced autonomous and AI capabilities. The ADF has budget and urgency — but no stratospheric ISR solution exists today.</p>
+    </div>
+    <div class="whynow-card reveal reveal-delay-1">
+      <div class="whynow-num">02</div>
+      <h3 class="whynow-title">Autonomy AI Reached a Tipping Point</h3>
+      <p class="whynow-body">Advances in onboard edge AI and computer vision between 2023–2025 make fully autonomous stratospheric station-keeping technically feasible for the first time — without prohibitive hardware costs or pilot oversight.</p>
+    </div>
+    <div class="whynow-card reveal reveal-delay-2">
+      <div class="whynow-num">03</div>
+      <h3 class="whynow-title">Solar Efficiency Crossed the 30% Threshold</h3>
+      <p class="whynow-body">Perovskite-silicon tandem solar cells crossed 30% efficiency commercially in 2024. This single advance extends HAPS endurance from days to 30+ days continuously — making the economics viable for the first time in history.</p>
+    </div>
+    <div class="whynow-card reveal reveal-delay-3">
+      <div class="whynow-num">04</div>
+      <h3 class="whynow-title">Australia's Regulatory Window is Open Right Now</h3>
+      <p class="whynow-body">ICAO's HAPS working group, CASA's emerging stratospheric framework, and ACMA's spectrum coordination are all in active drafting. The first Australian company to engage writes the rules. That window closes in 12–18 months.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <p class="section-label reveal">The Team</p>
+  <h2 class="section-title reveal reveal-delay-1">BUILT BY PEOPLE<br>WHO'VE DONE THIS</h2>
+  <p class="section-desc reveal reveal-delay-2">We have the three credentials that can't be faked: government relationships, aerospace engineering depth, and autonomous systems expertise.</p>
+
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar">SU</div>
+      <div class="team-role">CEO & Co-Founder</div>
+      <div class="team-name">Shreyas Urunkar</div>
+      <div class="team-bio">Former defence program manager. 10+ years in aerospace systems and government procurement. Deep relationships across ADF, DSTG, and Defence Industry Security Program.</div>
+    </div>
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-avatar">CTO</div>
+      <div class="team-role">CTO & Co-Founder</div>
+      <div class="team-name">[Engineer Name]</div>
+      <div class="team-bio">PhD Aerospace Engineering. Former stratospheric vehicle R&D at a leading research institute. 3 patents in autonomous flight systems and high-altitude aerodynamics.</div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-avatar">GR</div>
+      <div class="team-role">Head of Government Relations</div>
+      <div class="team-name">[Advisor Name]</div>
+      <div class="team-bio">Former RAAF program executive. EL2/SES equivalent. Active NV1 security clearance. Extensive networks across DSTG, DST Group, and allied defence ministries.</div>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-avatar">AI</div>
+      <div class="team-role">Head of Software & AI</div>
+      <div class="team-name">[ML Name]</div>
+      <div class="team-bio">Former autonomous systems engineer at Shield AI and Skydio. Expert in edge inference for contested RF environments. 8 years building autonomous systems at scale.</div>
+    </div>
+  </div>
+
+  <div class="team-advisors reveal">
+    <div class="advisors-label">Strategic Advisors (being assembled)</div>
+    <ul class="advisors-list">
+      <li>Senior ADF procurement official</li>
+      <li>Former NATO allied defence CTO</li>
+      <li>ICAO airspace regulatory specialist</li>
+      <li>In-Q-Tel portfolio company founder</li>
+    </ul>
+  </div>
+</section>
+
+<!-- INVESTORS -->
+<section id="investors">
+  <p class="section-label reveal" style="justify-content:center">Investment Opportunity</p>
+  <h2 class="section-title reveal reveal-delay-1" style="text-align:center;margin-bottom:60px">PRE-SEED ROUND</h2>
+
+  <div class="raise-box reveal reveal-delay-2">
+    <div class="raise-amount">$2,000,000</div>
+    <p class="raise-desc">Pre-Seed Round <span>—</span> SAFE <span>—</span> $15M Cap <span>—</span> 20% Discount</p>
+
+    <div class="raise-terms">
+      <div class="raise-term">
+        <div class="raise-term-label">Instrument</div>
+        <div class="raise-term-val">SAFE Note</div>
+      </div>
+      <div class="raise-term">
+        <div class="raise-term-label">Valuation Cap</div>
+        <div class="raise-term-val">$15,000,000</div>
+      </div>
+      <div class="raise-term">
+        <div class="raise-term-label">Discount Rate</div>
+        <div class="raise-term-val">20% at Series A</div>
+      </div>
+      <div class="raise-term">
+        <div class="raise-term-label">Minimum Check</div>
+        <div class="raise-term-val">$100,000</div>
+      </div>
+      <div class="raise-term">
+        <div class="raise-term-label">Target Close</div>
+        <div class="raise-term-val">Q2 2026</div>
+      </div>
+      <div class="raise-term">
+        <div class="raise-term-label">Runway</div>
+        <div class="raise-term-val">18 Months</div>
+      </div>
+    </div>
+
+    <div class="raise-milestones">
+      <div class="raise-milestone">
+        <div class="milestone-dot"></div>
+        <div class="milestone-text">Signed ADF LOI or government contract by Month 6</div>
+      </div>
+      <div class="raise-milestone">
+        <div class="milestone-dot"></div>
+        <div class="milestone-text">Autonomy stack demonstrated on live hardware</div>
+      </div>
+      <div class="raise-milestone">
+        <div class="milestone-dot"></div>
+        <div class="milestone-text">Defence Innovation Hub grant secured ($1M+ non-dilutive)</div>
+      </div>
+      <div class="raise-milestone">
+        <div class="milestone-dot"></div>
+        <div class="milestone-text">Series A raise initiated from a position of strength</div>
+      </div>
+    </div>
+
+    <div class="raise-actions">
+      <a href="mailto:shreyas@astrataerospace.com" class="btn-primary">Request Investor Pack</a>
+      <a href="mailto:shreyas@astrataerospace.com" class="btn-secondary">Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo-mark"></div>
+    <div class="footer-company">ASTRATO <span>AEROSPACE</span></div>
+  </div>
+  <div class="footer-center">
+    <a href="mailto:shreyas@astrataerospace.com">shreyas@astrataerospace.com</a><br>
+    <span style="font-size:12px;color:rgba(120,160,190,0.5);margin-top:6px;display:block">
+      Confidential — Pre-Seed Investment Opportunity 2026
+    </span>
+  </div>
+  <div class="footer-right">
+    © 2026 Astrato Aerospace Pty Ltd<br>
+    ABN: [XX XXX XXX XXX]
+  </div>
+</footer>
+
+<script>
+// ─── STARFIELD ───
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let stars = [], animId;
+
+function initStarfield() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  stars = [];
+  for (let i = 0; i < 160; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.4 + 0.2,
+      alpha: Math.random() * 0.6 + 0.1,
+      speed: Math.random() * 0.25 + 0.05,
+      twinkle: Math.random() * Math.PI * 2,
+    });
+  }
+}
+
+function drawStarfield() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const t = Date.now() * 0.001;
+  for (const s of stars) {
+    const a = s.alpha * (0.6 + 0.4 * Math.sin(t * s.speed + s.twinkle));
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200,220,255,${a})`;
+    ctx.fill();
+  }
+  animId = requestAnimationFrame(drawStarfield);
+}
+
+initStarfield();
+drawStarfield();
+window.addEventListener('resize', () => { initStarfield(); });
+
+// Slow parallax on hero
+document.getElementById('hero').addEventListener('mousemove', (e) => {
+  const xRatio = (e.clientX / window.innerWidth - 0.5) * 8;
+  const yRatio = (e.clientY / window.innerHeight - 0.5) * 4;
+  for (const s of stars) {
+    s.x += (xRatio * s.r * 0.15 - (s._dx || 0)) * 0.05;
+    s.y += (yRatio * s.r * 0.15 - (s._dy || 0)) * 0.05;
+    s._dx = xRatio * s.r * 0.15;
+    s._dy = yRatio * s.r * 0.15;
+  }
+});
+
+// ─── NAV SCROLL ───
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ─── REVEAL ON SCROLL ───
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(r => observer.observe(r));
+
+// ─── MARKET BARS ANIMATION ───
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.market-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const barsSection = document.querySelector('.market-bars');
+if (barsSection) barObserver.observe(barsSection);
+
+// Trigger hero reveal immediately
+setTimeout(() => {
+  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
+}, 200);
+</script>
+</body>
+</html>
