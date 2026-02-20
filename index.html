@@ -1878,11 +1878,6 @@ function checkReveals() {
 
 window.addEventListener('scroll', checkReveals, { passive: true });
 setTimeout(checkReveals, 300);
-
-// ─── MARKET BARS ANIMATION ───
-const barObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.market-bar-fill').forEach(bar => {
-        bar.style.width = bar.dataset.width + '%';
-      });
+</script>
+</body>
+</html>
