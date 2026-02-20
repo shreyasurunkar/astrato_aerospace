@@ -325,19 +325,19 @@
   }
 
   /* ─── REVEAL ANIMATIONS ─── */
-  .reveal {
+  . {
     opacity: 0;
     transform: translateY(32px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
-  .reveal.visible {
+  ..visible {
     opacity: 1;
     transform: translateY(0);
   }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
+  . { transition-delay: 0.1s; }
+  . { transition-delay: 0.2s; }
+  . { transition-delay: 0.3s; }
+  . { transition-delay: 0.4s; }
 
   /* ─── PROBLEM ─── */
   #problem {
@@ -1301,7 +1301,7 @@
     <div class="alt-layer"><span>GROUND</span><span class="dlayer-label">Infrastructure</span><span class="alt-km">0km</span></div>
   </div>
 
-  <div class="hero-content reveal">
+  <div class="hero-content">
     <p class="hero-eyebrow">Stratospheric Intelligence Platform</p>
     <h1 class="hero-headline">
       THE STRATOSPHERE<br>
@@ -1338,40 +1338,40 @@
 
 <!-- PROBLEM -->
 <section id="problem">
-  <p class="section-label reveal">The Gap</p>
-  <h2 class="section-title reveal reveal-delay-1">THREE TECHNOLOGIES.<br>ALL FAILING.</h2>
-  <p class="section-desc reveal reveal-delay-2">Governments across the Indo-Pacific need persistent, real-time intelligence over vast distances. Today, nothing delivers it. Satellites are too high. Drones are too low. And the stratosphere between them sits completely empty.</p>
+  <p class="section-label">The Gap</p>
+  <h2 class="section-title">THREE TECHNOLOGIES.<br>ALL FAILING.</h2>
+  <p class="section-desc">Governments across the Indo-Pacific need persistent, real-time intelligence over vast distances. Today, nothing delivers it. Satellites are too high. Drones are too low. And the stratosphere between them sits completely empty.</p>
 
   <div class="problem-grid">
-    <div class="problem-card reveal">
+    <div class="problem-card">
       <span class="problem-icon">🛰️</span>
       <h3 class="problem-title">Satellites miss the moment</h3>
       <p class="problem-body">A satellite passes over any given location for just minutes at a time. With 90-minute revisit gaps, entire crises unfold invisibly. You cannot stare at a border zone from space.</p>
     </div>
-    <div class="problem-card reveal reveal-delay-1">
+    <div class="problem-card">
       <span class="problem-icon">🚁</span>
       <h3 class="problem-title">Drones can't reach high enough</h3>
       <p class="problem-body">Military UAVs max out at 15km. Weather grounds them. Endurance tops at 48 hours. They require active pilots around the clock and can't legally enter sovereign airspace unannounced.</p>
     </div>
-    <div class="problem-card reveal reveal-delay-2">
+    <div class="problem-card">
       <span class="problem-icon">⚠️</span>
       <h3 class="problem-title">No persistent reconfigurable layer</h3>
       <p class="problem-body">When a cyclone hits, a border incursion begins, or a vessel goes dark in Australian waters, you need a response in hours — not the 18 months it takes to commission a new satellite.</p>
     </div>
   </div>
 
-  <div class="problem-callout reveal">
+  <div class="problem-callout">
     <strong>The stratosphere — 18 to 50km altitude — has been empty for 70 years.</strong> It is the only untapped layer of Earth's atmosphere. The technology to exploit it finally exists. Astrato is first.
   </div>
 </section>
 
 <!-- SOLUTION -->
 <section id="solution">
-  <p class="section-label reveal">The Solution</p>
-  <h2 class="section-title reveal reveal-delay-1">AUTONOMOUS.<br>PERSISTENT.<br>STRATOSPHERIC.</h2>
+  <p class="section-label">The Solution</p>
+  <h2 class="section-title">AUTONOMOUS.<br>PERSISTENT.<br>STRATOSPHERIC.</h2>
 
   <div class="solution-layout">
-    <div class="solution-diagram reveal">
+    <div class="solution-diagram">
       <div class="diagram-layer"><span>SPACE</span><span class="dlayer-label">LEO Satellites</span><span class="dlayer-alt">&gt;100km</span></div>
       <div class="diagram-layer"><span>NEAR SPACE</span><span class="dlayer-label">Weather balloons</span><span class="dlayer-alt">20–100km</span></div>
       <div class="diagram-layer haps">
@@ -1386,7 +1386,7 @@
       <div class="coverage-arc"></div>
     </div>
 
-    <ul class="solution-features reveal reveal-delay-2">
+    <ul class="solution-features">
       <li class="solution-feature">
         <span class="feature-num">01</span>
         <div class="feature-body">
@@ -1419,14 +1419,215 @@
   </div>
 </section>
 
+<!-- DRONE IMAGE SECTION -->
+<section id="drone-image" style="padding: 0 60px 80px; background: var(--navy);">
+  <div style="position:relative; border: 1px solid rgba(27,94,245,0.2); overflow:hidden;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#020912;stop-opacity:1"/>
+      <stop offset="35%" style="stop-color:#0a1628;stop-opacity:1"/>
+      <stop offset="70%" style="stop-color:#0d2040;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1a3a5c;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="haze" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1B5EF5;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#1B5EF5;stop-opacity:0.08"/>
+    </linearGradient>
+    <linearGradient id="wingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a3a4a;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#1a2a3a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0d1e2e;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="solarPanel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1B5EF5;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#0a3080;stop-opacity:0.8"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background sky -->
+  <rect width="1200" height="600" fill="url(#sky)"/>
+
+  <!-- Atmospheric haze layer at bottom -->
+  <rect width="1200" height="600" fill="url(#haze)"/>
+
+  <!-- Stars -->
+  <g opacity="0.7">
+    <circle cx="45" cy="30" r="0.8" fill="white" opacity="0.9"/>
+    <circle cx="120" cy="15" r="1.2" fill="white" opacity="0.8"/>
+    <circle cx="230" cy="45" r="0.6" fill="white" opacity="0.6"/>
+    <circle cx="350" cy="20" r="1.0" fill="white" opacity="0.9"/>
+    <circle cx="480" cy="10" r="0.8" fill="white" opacity="0.7"/>
+    <circle cx="560" cy="35" r="1.3" fill="white" opacity="0.85"/>
+    <circle cx="680" cy="18" r="0.7" fill="white" opacity="0.6"/>
+    <circle cx="790" cy="40" r="1.1" fill="white" opacity="0.8"/>
+    <circle cx="880" cy="12" r="0.9" fill="white" opacity="0.9"/>
+    <circle cx="950" cy="52" r="0.6" fill="white" opacity="0.5"/>
+    <circle cx="1050" cy="22" r="1.0" fill="white" opacity="0.75"/>
+    <circle cx="1140" cy="38" r="0.8" fill="white" opacity="0.8"/>
+    <circle cx="85" cy="78" r="0.5" fill="white" opacity="0.5"/>
+    <circle cx="175" cy="95" r="0.9" fill="white" opacity="0.6"/>
+    <circle cx="310" cy="65" r="0.7" fill="white" opacity="0.7"/>
+    <circle cx="440" cy="88" r="1.0" fill="white" opacity="0.55"/>
+    <circle cx="620" cy="70" r="0.6" fill="white" opacity="0.65"/>
+    <circle cx="730" cy="90" r="0.8" fill="white" opacity="0.6"/>
+    <circle cx="850" cy="72" r="1.2" fill="white" opacity="0.5"/>
+    <circle cx="1000" cy="82" r="0.7" fill="white" opacity="0.6"/>
+    <circle cx="1100" cy="60" r="0.9" fill="white" opacity="0.7"/>
+  </g>
+
+  <!-- Altitude layers / stratosphere bands -->
+  <rect x="0" y="340" width="1200" height="1" fill="#1B5EF5" opacity="0.15"/>
+  <rect x="0" y="380" width="1200" height="1" fill="#1B5EF5" opacity="0.1"/>
+
+  <!-- Faint curved earth horizon at bottom -->
+  <ellipse cx="600" cy="900" rx="900" ry="550" fill="none" stroke="#1B5EF5" stroke-width="1" opacity="0.2"/>
+
+  <!-- Atmospheric glow near horizon -->
+  <ellipse cx="600" cy="560" rx="600" ry="60" fill="#1B5EF5" opacity="0.06"/>
+  <ellipse cx="600" cy="580" rx="700" ry="40" fill="#2040A0" opacity="0.1"/>
+
+  <!-- THE AIRCRAFT — wide-span solar flying wing like Helios/Zephyr -->
+  <!-- Main wing — centered around y=280, spanning x=50 to x=1150 -->
+  <!-- Wing has gentle dihedral (slightly bent up at tips) -->
+
+  <!-- Wing shadow/depth -->
+  <ellipse cx="600" cy="305" rx="520" ry="18" fill="#000" opacity="0.3"/>
+
+  <!-- Left outer wingtip — slight upward curve -->
+  <path d="M 80 268 Q 120 262 160 265 Q 200 268 240 272" 
+        fill="none" stroke="#1a2a38" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- Right outer wingtip -->
+  <path d="M 1120 268 Q 1080 262 1040 265 Q 1000 268 960 272" 
+        fill="none" stroke="#1a2a38" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- Main wing body -->
+  <!-- Wing top surface -->
+  <path d="M 75 266 C 100 260, 200 265, 300 272 C 400 278, 500 282, 600 283 C 700 282, 800 278, 900 272 C 1000 265, 1100 260, 1125 266 C 1120 275, 1100 278, 900 285 C 800 290, 700 293, 600 294 C 500 293, 400 290, 300 285 C 100 280, 80 278, 75 266 Z"
+        fill="url(#wingGrad)" stroke="#2a3a4a" stroke-width="0.5"/>
+
+  <!-- Solar panels on upper wing surface -->
+  <!-- Left panels -->
+  <rect x="130" y="266" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8" transform="rotate(-2, 145, 271)"/>
+  <rect x="168" y="267" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8" transform="rotate(-2, 183, 272)"/>
+  <rect x="206" y="269" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8" transform="rotate(-1.5, 221, 274)"/>
+  <rect x="244" y="271" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8" transform="rotate(-1, 259, 276)"/>
+  <rect x="282" y="272" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="320" y="273" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="358" y="274" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="396" y="275" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="434" y="275" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="472" y="276" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <!-- Center -->
+  <rect x="510" y="276" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="548" y="276" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="586" y="276" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="624" y="276" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="662" y="275" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <!-- Right panels -->
+  <rect x="700" y="275" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="738" y="274" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="776" y="273" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="814" y="272" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8"/>
+  <rect x="852" y="271" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8" transform="rotate(1, 867, 276)"/>
+  <rect x="890" y="269" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8" transform="rotate(1.5, 905, 274)"/>
+  <rect x="928" y="267" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8" transform="rotate(2, 943, 272)"/>
+  <rect x="966" y="266" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8" transform="rotate(2.5, 981, 271)"/>
+  <rect x="1004" y="265" width="30" height="10" rx="1" fill="url(#solarPanel)" opacity="0.8" transform="rotate(3, 1019, 270)"/>
+
+  <!-- Motor pods along wing (8 motors like Helios) -->
+  <g fill="#3a4a5a" stroke="#4a5a6a" stroke-width="0.5">
+    <!-- Left motors -->
+    <ellipse cx="160" cy="285" rx="5" ry="12" fill="#2a3a4a"/>
+    <ellipse cx="280" cy="284" rx="5" ry="12" fill="#2a3a4a"/>
+    <ellipse cx="400" cy="285" rx="5" ry="12" fill="#2a3a4a"/>
+    <ellipse cx="500" cy="286" rx="5" ry="12" fill="#2a3a4a"/>
+    <!-- Right motors -->
+    <ellipse cx="700" cy="286" rx="5" ry="12" fill="#2a3a4a"/>
+    <ellipse cx="800" cy="285" rx="5" ry="12" fill="#2a3a4a"/>
+    <ellipse cx="920" cy="284" rx="5" ry="12" fill="#2a3a4a"/>
+    <ellipse cx="1040" cy="285" rx="5" ry="12" fill="#2a3a4a"/>
+  </g>
+
+  <!-- Propeller discs (faint blur circles) -->
+  <g opacity="0.2" filter="url(#glow)">
+    <circle cx="160" cy="278" r="18" fill="none" stroke="#aac0e0" stroke-width="1"/>
+    <circle cx="280" cy="277" r="18" fill="none" stroke="#aac0e0" stroke-width="1"/>
+    <circle cx="400" cy="278" r="18" fill="none" stroke="#aac0e0" stroke-width="1"/>
+    <circle cx="500" cy="279" r="18" fill="none" stroke="#aac0e0" stroke-width="1"/>
+    <circle cx="700" cy="279" r="18" fill="none" stroke="#aac0e0" stroke-width="1"/>
+    <circle cx="800" cy="278" r="18" fill="none" stroke="#aac0e0" stroke-width="1"/>
+    <circle cx="920" cy="277" r="18" fill="none" stroke="#aac0e0" stroke-width="1"/>
+    <circle cx="1040" cy="278" r="18" fill="none" stroke="#aac0e0" stroke-width="1"/>
+  </g>
+
+  <!-- Wing trailing edge highlight -->
+  <path d="M 80 275 C 200 284, 400 290, 600 292 C 800 290, 1000 284, 1120 275"
+        fill="none" stroke="#4a6a8a" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Wing leading edge highlight -->
+  <path d="M 78 264 C 200 259, 400 267, 600 270 C 800 267, 1000 259, 1122 264"
+        fill="none" stroke="#6a8aaa" stroke-width="0.6" opacity="0.4"/>
+
+  <!-- Center body / fuselage nacelle -->
+  <ellipse cx="600" cy="283" rx="28" ry="9" fill="#2a3a4a" stroke="#3a4a5a" stroke-width="0.5"/>
+
+  <!-- Payload pod (hanging below center) -->
+  <rect x="587" y="291" width="26" height="14" rx="4" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.5"/>
+  <!-- Sensor aperture -->
+  <circle cx="600" cy="298" r="4" fill="#0a1a2a" stroke="#1B5EF5" stroke-width="0.8" opacity="0.8"/>
+  <circle cx="600" cy="298" r="2" fill="#1B5EF5" opacity="0.4"/>
+
+  <!-- Landing gear pods (small ones along wing) -->
+  <rect x="267" y="287" width="8" height="6" rx="2" fill="#1a2a3a"/>
+  <rect x="487" y="289" width="8" height="6" rx="2" fill="#1a2a3a"/>
+  <rect x="705" y="289" width="8" height="6" rx="2" fill="#1a2a3a"/>
+  <rect x="925" y="287" width="8" height="6" rx="2" fill="#1a2a3a"/>
+
+  <!-- Orange nav light on wingtip -->
+  <circle cx="83" cy="267" r="3" fill="#F5831E" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="1117" cy="267" r="3" fill="#F5831E" filter="url(#glow)" opacity="0.9"/>
+
+  <!-- Faint contrail / exhaust behind motors -->
+  <g opacity="0.06">
+    <path d="M 160 287 Q 140 295 100 300" stroke="white" stroke-width="3" fill="none"/>
+    <path d="M 280 286 Q 260 294 220 298" stroke="white" stroke-width="2" fill="none"/>
+    <path d="M 920 286 Q 940 294 980 298" stroke="white" stroke-width="2" fill="none"/>
+    <path d="M 1040 287 Q 1060 295 1100 300" stroke="white" stroke-width="3" fill="none"/>
+  </g>
+
+  <!-- Caption box bottom right -->
+  <rect x="0" y="542" width="1200" height="58" fill="#020912" opacity="0.85"/>
+  <line x1="0" y1="542" x2="1200" y2="542" stroke="#1B5EF5" stroke-width="1" opacity="0.4"/>
+  <rect x="20" y="553" width="3" height="34" fill="#F5831E"/>
+  <text x="34" y="568" font-family="monospace" font-size="11" fill="#7A9BB5" letter-spacing="2">SOLAR-ELECTRIC HAPS VEHICLE  ·  STRATOSPHERIC ALTITUDE 18–50KM</text>
+  <text x="34" y="586" font-family="monospace" font-size="10" fill="#4a6a8a" letter-spacing="1">AUTONOMOUS STATION-KEEPING  ·  30+ DAY ENDURANCE  ·  MULTI-SENSOR PAYLOAD</text>
+  <text x="1160" y="576" font-family="monospace" font-size="9" fill="#2a4a6a" letter-spacing="1" text-anchor="end">ASTRATO AEROSPACE</text>
+</svg>
+  </div>
+  <p style="font-size:12px; color:rgba(120,160,190,0.4); text-align:right; margin-top:10px; letter-spacing:1px; text-transform:uppercase;">
+    Illustration: Solar-electric HAPS vehicle in stratospheric cruise — representative of Astrato's target platform class
+  </p>
+</section>
+
+
 <!-- USE CASES -->
 <section id="usecases">
-  <p class="section-label reveal">Applications</p>
-  <h2 class="section-title reveal reveal-delay-1">BUILT FOR<br>AUSTRALIA'S NEEDS</h2>
-  <p class="section-desc reveal reveal-delay-2">Three core markets, each with urgent unmet demand and government-backed budgets to pay for a solution.</p>
+  <p class="section-label">Applications</p>
+  <h2 class="section-title">BUILT FOR<br>AUSTRALIA'S NEEDS</h2>
+  <p class="section-desc">Three core markets, each with urgent unmet demand and government-backed budgets to pay for a solution.</p>
 
   <div class="usecases-grid">
-    <div class="usecase-card orange reveal">
+    <div class="usecase-card orange">
       <span class="usecase-icon">🛡️</span>
       <span class="usecase-tag">Defence & Intelligence</span>
       <h3 class="usecase-title">Persistent ISR for the ADF</h3>
@@ -1439,7 +1640,7 @@
       </ul>
     </div>
 
-    <div class="usecase-card green reveal reveal-delay-1">
+    <div class="usecase-card green">
       <span class="usecase-icon">🌾</span>
       <span class="usecase-tag">Commercial</span>
       <h3 class="usecase-title">Agricultural & Environmental Monitoring</h3>
@@ -1452,7 +1653,7 @@
       </ul>
     </div>
 
-    <div class="usecase-card blue reveal reveal-delay-2">
+    <div class="usecase-card blue">
       <span class="usecase-icon">📡</span>
       <span class="usecase-tag">Connectivity</span>
       <h3 class="usecase-title">Sovereign Connectivity Infrastructure</h3>
@@ -1469,26 +1670,26 @@
 
 <!-- HOW IT WORKS -->
 <section id="how">
-  <p class="section-label reveal">How It Works</p>
-  <h2 class="section-title reveal reveal-delay-1">FROM GROUND TO<br>STRATOSPHERE IN 4 STEPS</h2>
+  <p class="section-label">How It Works</p>
+  <h2 class="section-title">FROM GROUND TO<br>STRATOSPHERE IN 4 STEPS</h2>
 
   <div class="how-steps">
-    <div class="how-step reveal">
+    <div class="how-step">
       <div class="step-circle">01</div>
       <h3 class="step-title">Launch</h3>
       <p class="step-body">The aircraft takes off from a standard runway. No special infrastructure. Reaches 20km altitude within hours under its own power.</p>
     </div>
-    <div class="how-step reveal reveal-delay-1">
+    <div class="how-step">
       <div class="step-circle">02</div>
       <h3 class="step-title">Station-Keep</h3>
       <p class="step-body">Onboard AI holds the aircraft over a precise coordinate — automatically adjusting to stratospheric wind patterns, with no ground crew needed.</p>
     </div>
-    <div class="how-step reveal reveal-delay-2">
+    <div class="how-step">
       <div class="step-circle">03</div>
       <h3 class="step-title">Sense & Process</h3>
       <p class="step-body">Sensors scan the area below. Edge AI processes imagery and signals onboard, extracting intelligence before transmitting anything to the ground.</p>
     </div>
-    <div class="how-step reveal reveal-delay-3">
+    <div class="how-step">
       <div class="step-circle">04</div>
       <h3 class="step-title">Deliver</h3>
       <p class="step-body">Encrypted, actionable intelligence reaches operators in real-time. Decisions are made in minutes, not hours. The aircraft keeps flying.</p>
@@ -1500,11 +1701,11 @@
 <section id="numbers">
   <div class="numbers-grid">
     <div class="numbers-left">
-      <p class="section-label reveal">The Opportunity</p>
-      <h2 class="section-title reveal reveal-delay-1">A MARKET THAT<br>CAN'T WAIT</h2>
-      <p class="section-desc reveal reveal-delay-2" style="margin-bottom:0">Australia's 2023 Defence Strategic Review mandated a historic investment in autonomous capabilities. The ADF has the budget. Astrato has the technology. There is no other Australian stratospheric ISR company.</p>
+      <p class="section-label">The Opportunity</p>
+      <h2 class="section-title">A MARKET THAT<br>CAN'T WAIT</h2>
+      <p class="section-desc" style="margin-bottom:0">Australia's 2023 Defence Strategic Review mandated a historic investment in autonomous capabilities. The ADF has the budget. Astrato has the technology. There is no other Australian stratospheric ISR company.</p>
 
-      <div class="stat-blocks reveal reveal-delay-3">
+      <div class="stat-blocks">
         <div class="stat-block">
           <div class="stat-num">$41<span class="accent">B</span></div>
           <div class="stat-label">Global HAPS Market 2030</div>
@@ -1528,7 +1729,7 @@
       </div>
     </div>
 
-    <div class="numbers-right reveal reveal-delay-2">
+    <div class="numbers-right">
       <p class="section-label" style="margin-bottom:32px">2030 Market by Segment</p>
       <div class="market-bars">
         <div class="market-bar-item">
@@ -1574,26 +1775,26 @@
 
 <!-- WHY NOW -->
 <section id="whynow">
-  <p class="section-label reveal">Why Now</p>
-  <h2 class="section-title reveal reveal-delay-1">FOUR TAILWINDS<br>CONVERGING IN 2026</h2>
+  <p class="section-label">Why Now</p>
+  <h2 class="section-title">FOUR TAILWINDS<br>CONVERGING IN 2026</h2>
 
   <div class="whynow-grid">
-    <div class="whynow-card reveal">
+    <div class="whynow-card">
       <div class="whynow-num">01</div>
       <h3 class="whynow-title">Australian Defence Investment at Historic Highs</h3>
       <p class="whynow-body">Australia's 2023 Defence Strategic Review mandated a $330B+ ten-year investment. AUKUS Pillar 2 commits billions specifically to advanced autonomous and AI capabilities. The ADF has budget and urgency — but no stratospheric ISR solution exists today.</p>
     </div>
-    <div class="whynow-card reveal reveal-delay-1">
+    <div class="whynow-card">
       <div class="whynow-num">02</div>
       <h3 class="whynow-title">Autonomy AI Reached a Tipping Point</h3>
       <p class="whynow-body">Advances in onboard edge AI and computer vision between 2023–2025 make fully autonomous stratospheric station-keeping technically feasible for the first time — without prohibitive hardware costs or pilot oversight.</p>
     </div>
-    <div class="whynow-card reveal reveal-delay-2">
+    <div class="whynow-card">
       <div class="whynow-num">03</div>
       <h3 class="whynow-title">Solar Efficiency Crossed the 30% Threshold</h3>
       <p class="whynow-body">Perovskite-silicon tandem solar cells crossed 30% efficiency commercially in 2024. This single advance extends HAPS endurance from days to 30+ days continuously — making the economics viable for the first time in history.</p>
     </div>
-    <div class="whynow-card reveal reveal-delay-3">
+    <div class="whynow-card">
       <div class="whynow-num">04</div>
       <h3 class="whynow-title">Australia's Regulatory Window is Open Right Now</h3>
       <p class="whynow-body">ICAO's HAPS working group, CASA's emerging stratospheric framework, and ACMA's spectrum coordination are all in active drafting. The first Australian company to engage writes the rules. That window closes in 12–18 months.</p>
@@ -1603,30 +1804,30 @@
 
 <!-- TEAM -->
 <section id="team">
-  <p class="section-label reveal">The Team</p>
-  <h2 class="section-title reveal reveal-delay-1">BUILT BY PEOPLE<br>WHO'VE DONE THIS</h2>
-  <p class="section-desc reveal reveal-delay-2">We have the three credentials that can't be faked: government relationships, aerospace engineering depth, and autonomous systems expertise.</p>
+  <p class="section-label">The Team</p>
+  <h2 class="section-title">BUILT BY PEOPLE<br>WHO'VE DONE THIS</h2>
+  <p class="section-desc">We have the three credentials that can't be faked: government relationships, aerospace engineering depth, and autonomous systems expertise.</p>
 
   <div class="team-grid">
-    <div class="team-card reveal">
+    <div class="team-card">
       <div class="team-avatar">SU</div>
       <div class="team-role">CEO & Co-Founder</div>
       <div class="team-name">Shreyas Urunkar</div>
       <div class="team-bio">Former defence program manager. 10+ years in aerospace systems and government procurement. Deep relationships across ADF, DSTG, and Defence Industry Security Program.</div>
     </div>
-    <div class="team-card reveal reveal-delay-1">
+    <div class="team-card">
       <div class="team-avatar">CTO</div>
       <div class="team-role">CTO & Co-Founder</div>
       <div class="team-name">[Engineer Name]</div>
       <div class="team-bio">PhD Aerospace Engineering. Former stratospheric vehicle R&D at a leading research institute. 3 patents in autonomous flight systems and high-altitude aerodynamics.</div>
     </div>
-    <div class="team-card reveal reveal-delay-2">
+    <div class="team-card">
       <div class="team-avatar">GR</div>
       <div class="team-role">Head of Government Relations</div>
-      <div class="team-name">Greg Hunt</div>
-      <div class="team-bio">Former Minister of ETc</div>
+      <div class="team-name">[Advisor Name]</div>
+      <div class="team-bio">Former RAAF program executive. EL2/SES equivalent. Active NV1 security clearance. Extensive networks across DSTG, DST Group, and allied defence ministries.</div>
     </div>
-    <div class="team-card reveal reveal-delay-3">
+    <div class="team-card">
       <div class="team-avatar">AI</div>
       <div class="team-role">Head of Software & AI</div>
       <div class="team-name">[ML Name]</div>
@@ -1634,7 +1835,7 @@
     </div>
   </div>
 
-  <div class="team-advisors reveal">
+  <div class="team-advisors">
     <div class="advisors-label">Strategic Advisors (being assembled)</div>
     <ul class="advisors-list">
       <li>Senior ADF procurement official</li>
@@ -1647,10 +1848,10 @@
 
 <!-- INVESTORS -->
 <section id="investors">
-  <p class="section-label reveal" style="justify-content:center">Investment Opportunity</p>
-  <h2 class="section-title reveal reveal-delay-1" style="text-align:center;margin-bottom:60px">PRE-SEED ROUND</h2>
+  <p class="section-label" style="justify-content:center">Investment Opportunity</p>
+  <h2 class="section-title" style="text-align:center;margin-bottom:60px">PRE-SEED ROUND</h2>
 
-  <div class="raise-box reveal reveal-delay-2">
+  <div class="raise-box">
     <div class="raise-amount">$2,000,000</div>
     <p class="raise-desc">Pre-Seed Round <span>—</span> SAFE <span>—</span> $15M Cap <span>—</span> 20% Discount</p>
 
@@ -1780,7 +1981,6 @@ function checkPassword() {
     document.getElementById('gate').classList.add('unlocked');
     document.body.style.overflow = '';
     error.textContent = '';
-    setTimeout(checkReveals, 50);
   } else {
     input.classList.add('error');
     error.textContent = 'Incorrect password. Please try again.';
@@ -1798,7 +1998,6 @@ document.getElementById('gate-input').addEventListener('keydown', (e) => {
 if (sessionStorage.getItem('astrato_auth') === '1') {
   document.getElementById('gate').classList.add('unlocked');
   document.body.style.overflow = '';
-  setTimeout(checkReveals, 300);
 } else {
   document.body.style.overflow = 'hidden';
 }
@@ -1860,24 +2059,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ─── REVEAL ON SCROLL ───
-let barsAnimated = false;
 
-function checkReveals() {
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 60) el.classList.add('visible');
-  });
-  if (!barsAnimated) {
-    const barsEl = document.querySelector('.market-bars');
-    if (barsEl && barsEl.getBoundingClientRect().top < window.innerHeight - 80) {
-      barsEl.querySelectorAll('.market-bar-fill').forEach(b => { b.style.width = b.dataset.width + '%'; });
-      barsAnimated = true;
-    }
-  }
-}
-
-window.addEventListener('scroll', checkReveals, { passive: true });
-setTimeout(checkReveals, 300);
 </script>
 </body>
 </html>
