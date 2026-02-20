@@ -134,20 +134,23 @@
     color: rgba(120,160,190,0.5);
     transition: all 0.3s;
   }
-  .alt-layer.active {
+  .alt-layer.active,
+  .alt-layer.haps {
     background: rgba(27,94,245,0.12);
     border-left: 3px solid var(--orange);
     color: var(--orange);
     font-weight: 700;
     letter-spacing: 2px;
   }
-  .alt-layer.active .alt-label { color: var(--white); }
+  .alt-layer.active .alt-label,
+  .alt-layer.haps .alt-label { color: var(--white); }
   .alt-layer .alt-km {
     margin-left: auto;
     color: rgba(120,160,190,0.4);
     font-size: 10px;
   }
-  .alt-layer.active .alt-km { color: var(--grey); }
+  .alt-layer.active .alt-km,
+  .alt-layer.haps .alt-km { color: var(--grey); }
 
   .hero-content {
     position: relative;
