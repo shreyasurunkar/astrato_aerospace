@@ -1780,6 +1780,7 @@ function checkPassword() {
     document.getElementById('gate').classList.add('unlocked');
     document.body.style.overflow = '';
     error.textContent = '';
+    setTimeout(checkReveals, 50);
   } else {
     input.classList.add('error');
     error.textContent = 'Incorrect password. Please try again.';
@@ -1797,6 +1798,7 @@ document.getElementById('gate-input').addEventListener('keydown', (e) => {
 if (sessionStorage.getItem('astrato_auth') === '1') {
   document.getElementById('gate').classList.add('unlocked');
   document.body.style.overflow = '';
+  setTimeout(checkReveals, 300);
 } else {
   document.body.style.overflow = 'hidden';
 }
@@ -1858,13 +1860,24 @@ window.addEventListener('scroll', () => {
 });
 
 // ─── REVEAL ON SCROLL ───
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('visible');
+let barsAnimated = false;
+
+function checkReveals() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) el.classList.add('visible');
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-reveals.forEach(r => observer.observe(r));
+  if (!barsAnimated) {
+    const barsEl = document.querySelector('.market-bars');
+    if (barsEl && barsEl.getBoundingClientRect().top < window.innerHeight - 80) {
+      barsEl.querySelectorAll('.market-bar-fill').forEach(b => { b.style.width = b.dataset.width + '%'; });
+      barsAnimated = true;
+    }
+  }
+}
+
+window.addEventListener('scroll', checkReveals, { passive: true });
+setTimeout(checkReveals, 300);
 
 // ─── MARKET BARS ANIMATION ───
 const barObserver = new IntersectionObserver((entries) => {
