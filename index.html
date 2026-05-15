@@ -8,9 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #060E1F;
-    --navy-mid: #0D1E3A;
-    --navy-light: #1E3A5A;
+    --navy: #120A20;
+    --navy-mid: #1A1228;
+    --navy-light: #2A1A3A;
     --blue: #1B5EF5;
     --blue-bright: #4A90F5;
     --orange: #F5831E;
@@ -43,7 +43,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 60px;
-    background: rgba(6,14,31,0.85);
+    background: rgba(18,10,32,0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(27,94,245,0.15);
     transition: padding 0.3s;
@@ -1008,7 +1008,7 @@
 
   /* ─── FOOTER ─── */
   footer {
-    background: #020912;
+    background: #0a0610;
     padding: 48px 60px;
     border-top: 1px solid rgba(27,94,245,0.12);
     display: flex;
@@ -1051,7 +1051,7 @@
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: var(--navy);
+    background: #120A20;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1326,8 +1326,7 @@
       <h3 class="problem-title">Satellites miss the moment</h3>
       <p class="problem-body">A satellite passes over any given location for just minutes at a time. With 90-minute revisit gaps, entire crises unfold invisibly. You cannot stare at a border zone from space.</p>
     </div>
-    <div class="problem-card">
-      <span class="problem-icon">🚁</span>
+    <div class="problem-card">      <span class="problem-icon">🚁</span>
       <h3 class="problem-title">Drones can't reach high enough</h3>
       <p class="problem-body">Military UAVs max out at 15km. Weather grounds them. Endurance tops at 48 hours. They require active pilots around the clock and can't legally enter sovereign airspace unannounced.</p>
     </div>
@@ -1403,10 +1402,10 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
   <defs>
     <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#020912;stop-opacity:1"/>
-      <stop offset="35%" style="stop-color:#0a1628;stop-opacity:1"/>
-      <stop offset="70%" style="stop-color:#0d2040;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#1a3a5c;stop-opacity:1"/>
+      <stop offset="0%" style="stop-color:#0a0610;stop-opacity:1"/>
+      <stop offset="35%" style="stop-color:#120a20;stop-opacity:1"/>
+      <stop offset="70%" style="stop-color:#1a1228;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#2a1a3a;stop-opacity:1"/>
     </linearGradient>
     <linearGradient id="haze" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#1B5EF5;stop-opacity:0"/>
@@ -1432,7 +1431,7 @@
   </defs>
 
   <!-- Background sky -->
-  <rect width="1200" height="600" fill="url(#sky)"/>
+  <rect width="1200" height="600" fill="#120A20"/>
 
   <!-- Atmospheric haze layer at bottom -->
   <rect width="1200" height="600" fill="url(#haze)"/>
@@ -1584,7 +1583,7 @@
   </g>
 
   <!-- Caption box bottom right -->
-  <rect x="0" y="542" width="1200" height="58" fill="#020912" opacity="0.85"/>
+  <rect x="0" y="542" width="1200" height="58" fill="#0a0610" opacity="0.85"/>
   <line x1="0" y1="542" x2="1200" y2="542" stroke="#1B5EF5" stroke-width="1" opacity="0.4"/>
   <rect x="20" y="553" width="3" height="34" fill="#F5831E"/>
   <text x="34" y="568" font-family="monospace" font-size="11" fill="#7A9BB5" letter-spacing="2">SOLAR-ELECTRIC HAPS VEHICLE  ·  STRATOSPHERIC ALTITUDE 18–50KM</text>
