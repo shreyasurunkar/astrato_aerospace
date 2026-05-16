@@ -13,12 +13,12 @@
     --navy-light: #2A1A3A;
     --blue: #1B5EF5;
     --blue-bright: #4A90F5;
-    --orange: #F5831E;
-    --orange-dim: #C4661A;
+    --orange: #3d2f8c;
+    --orange-dim: #2d1e6c;
     --white: #FFFFFF;
-    --grey: #7A9BB5;
-    --grey-light: #B8CED8;
-    --text: #D8E4F0;
+    --grey: #bbb2fd;
+    --grey-light: #bbb2fd;
+    --text: #FFFFFF;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,7 +27,7 @@
 
   body {
     background: var(--navy);
-    color: var(--text);
+    color: #ffffff;
     font-family: 'Outfit', sans-serif;
     font-weight: 400;
     line-height: 1.6;
@@ -58,16 +58,16 @@
   }
   .nav-logo-mark {
     width: 36px; height: 36px;
-    background: var(--orange);
+    background: #3d2f8c;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
   }
   .nav-logo-text {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 22px;
     letter-spacing: 2px;
-    color: var(--white);
+    color: #bbb2fd;
   }
-  .nav-logo-text span { color: var(--orange); }
+  .nav-logo-text span { color: #3d2f8c; }
 
   .nav-links {
     display: flex;
@@ -75,24 +75,24 @@
     list-style: none;
   }
   .nav-links a {
-    color: var(--grey);
+    color: #bbb2fd;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.5px;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover { color: #ffffff; }
 
   .nav-cta {
-    background: var(--orange);
-    color: var(--white) !important;
+    background: #3d2f8c;
+    color: #ffffff !important;
     padding: 10px 22px;
     border-radius: 2px;
     font-weight: 600 !important;
     transition: background 0.2s !important;
   }
-  .nav-cta:hover { background: var(--orange-dim) !important; color: var(--white) !important; }
+  .nav-cta:hover { background: #2d1e6c !important; color: #ffffff !important; }
 
   /* ─── HERO ─── */
   #hero {
@@ -168,7 +168,7 @@
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--orange);
+    color: #3d2f8c;
     margin-bottom: 28px;
   }
   .hero-eyebrow::before {
@@ -176,7 +176,7 @@
     display: block;
     width: 30px;
     height: 2px;
-    background: var(--orange);
+    background: #3d2f8c;
   }
 
   .hero-headline {
@@ -184,14 +184,14 @@
     font-size: clamp(56px, 7vw, 96px);
     line-height: 0.95;
     letter-spacing: 2px;
-    color: var(--white);
+    color: #bbb2fd;
     margin-bottom: 12px;
   }
-  .hero-headline .accent { color: var(--orange); }
+  .hero-headline .accent { color: #3d2f8c; }
 
   .hero-sub {
     font-size: clamp(16px, 2vw, 20px);
-    color: var(--grey-light);
+    color: #ffffff;
     font-weight: 300;
     max-width: 520px;
     margin-bottom: 48px;
@@ -205,8 +205,8 @@
   }
 
   .btn-primary {
-    background: var(--orange);
-    color: var(--white);
+    background: #3d2f8c;
+    color: #ffffff;
     padding: 16px 36px;
     font-family: 'Outfit', sans-serif;
     font-size: 15px;
@@ -219,11 +219,11 @@
     display: inline-block;
     transition: background 0.2s, transform 0.15s;
   }
-  .btn-primary:hover { background: var(--orange-dim); transform: translateY(-1px); }
+  .btn-primary:hover { background: #2d1e6c; transform: translateY(-1px); }
 
   .btn-secondary {
     background: transparent;
-    color: var(--white);
+    color: #ffffff;
     padding: 16px 36px;
     font-family: 'Outfit', sans-serif;
     font-size: 15px;
@@ -236,7 +236,7 @@
     display: inline-block;
     transition: border-color 0.2s, color 0.2s;
   }
-  .btn-secondary:hover { border-color: var(--white); color: var(--white); }
+  .btn-secondary:hover { border-color: #ffffff; color: #ffffff; }
 
   .hero-stats {
     position: absolute;
@@ -250,10 +250,10 @@
   .hero-stat-num {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 36px;
-    color: var(--white);
+    color: #bbb2fd;
     letter-spacing: 1px;
   }
-  .hero-stat-num span { color: var(--orange); }
+  .hero-stat-num span { color: #3d2f8c; }
   .hero-stat-label {
     font-size: 11px;
     letter-spacing: 1.5px;
@@ -273,7 +273,7 @@
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--orange);
+    color: #3d2f8c;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -284,21 +284,21 @@
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--orange);
+    background: #3d2f8c;
   }
 
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(42px, 5vw, 64px);
     letter-spacing: 2px;
-    color: var(--white);
+    color: #bbb2fd;
     line-height: 1;
     margin-bottom: 20px;
   }
 
   .section-desc {
     font-size: 18px;
-    color: var(--grey-light);
+    color: #ffffff;
     font-weight: 300;
     max-width: 600px;
     line-height: 1.7;
@@ -361,29 +361,29 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28px;
     letter-spacing: 1.5px;
-    color: var(--white);
+    color: #bbb2fd;
     margin-bottom: 16px;
     line-height: 1.1;
   }
 
   .problem-body {
     font-size: 15px;
-    color: var(--grey);
+    color: #ffffff;
     line-height: 1.7;
   }
 
   .problem-callout {
     margin-top: 48px;
     padding: 28px 40px;
-    background: rgba(245,131,30,0.08);
-    border: 1px solid rgba(245,131,30,0.3);
-    border-left: 4px solid var(--orange);
+    background: rgba(61,47,140,0.08);
+    border: 1px solid rgba(61,47,140,0.3);
+    border-left: 4px solid #3d2f8c;
     font-size: 17px;
     color: var(--grey-light);
     font-style: italic;
     line-height: 1.6;
   }
-  .problem-callout strong { color: var(--orange); font-style: normal; }
+  .problem-callout strong { color: #3d2f8c; font-style: normal; }
 
   /* ─── SOLUTION ─── */
   #solution {
@@ -498,13 +498,13 @@
   .feature-title {
     font-size: 18px;
     font-weight: 700;
-    color: var(--white);
+    color: #bbb2fd;
     margin-bottom: 8px;
     letter-spacing: 0.3px;
   }
   .feature-desc {
     font-size: 14px;
-    color: var(--grey);
+    color: #ffffff;
     line-height: 1.65;
   }
 
@@ -567,7 +567,7 @@
     margin-bottom: 16px;
     border-radius: 2px;
   }
-  .orange .usecase-tag { background: rgba(245,131,30,0.15); color: var(--orange); }
+  .orange .usecase-tag { background: rgba(61,47,140,0.15); color: #3d2f8c; }
   .green .usecase-tag { background: rgba(44,182,125,0.15); color: #2CB67D; }
   .blue .usecase-tag { background: rgba(27,94,245,0.15); color: var(--blue-bright); }
 
@@ -575,14 +575,14 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 26px;
     letter-spacing: 1.5px;
-    color: var(--white);
+    color: #bbb2fd;
     margin-bottom: 14px;
     line-height: 1.1;
   }
 
   .usecase-body {
     font-size: 14px;
-    color: var(--grey);
+    color: #ffffff;
     line-height: 1.7;
     margin-bottom: 24px;
   }
@@ -595,7 +595,7 @@
   }
   .usecase-list li {
     font-size: 13px;
-    color: var(--grey-light);
+    color: #ffffff;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -660,14 +660,14 @@
   .step-title {
     font-size: 16px;
     font-weight: 700;
-    color: var(--white);
+    color: #bbb2fd;
     margin-bottom: 12px;
     letter-spacing: 0.3px;
   }
 
   .step-body {
     font-size: 13px;
-    color: var(--grey);
+    color: #ffffff;
     line-height: 1.65;
   }
 
@@ -703,21 +703,21 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 52px;
     letter-spacing: 1px;
-    color: var(--white);
+    color: #bbb2fd;
     line-height: 1;
     margin-bottom: 8px;
   }
-  .stat-num .accent { color: var(--orange); }
+  .stat-num .accent { color: #3d2f8c; }
   .stat-label {
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--grey);
+    color: #bbb2fd;
   }
   .stat-sub {
     font-size: 13px;
-    color: var(--grey);
+    color: #ffffff;
     margin-top: 8px;
     line-height: 1.5;
   }
@@ -732,8 +732,8 @@
     justify-content: space-between;
     margin-bottom: 8px;
   }
-  .market-bar-label { font-size: 14px; color: var(--grey-light); font-weight: 500; }
-  .market-bar-val { font-size: 14px; color: var(--white); font-weight: 700; }
+  .market-bar-label { font-size: 14px; color: #ffffff; font-weight: 500; }
+  .market-bar-val { font-size: 14px; color: #bbb2fd; font-weight: 700; }
 
   .market-bar-track {
     height: 6px;
@@ -747,7 +747,7 @@
     width: 0;
     transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .market-bar-fill.orange { background: var(--orange); }
+  .market-bar-fill.orange { background: #3d2f8c; }
   .market-bar-fill.blue { background: var(--blue); }
   .market-bar-fill.mid { background: var(--blue-bright); }
   .market-bar-fill.light { background: rgba(74,144,245,0.5); }
@@ -789,7 +789,7 @@
     transition: transform 0.2s;
   }
   .whynow-card:hover { transform: translateX(4px); }
-  .whynow-card:nth-child(1) { border-left-color: var(--orange); }
+  .whynow-card:nth-child(1) { border-left-color: #3d2f8c; }
   .whynow-card:nth-child(2) { border-left-color: var(--blue); }
   .whynow-card:nth-child(3) { border-left-color: var(--blue-bright); }
   .whynow-card:nth-child(4) { border-left-color: #2CB67D; }
@@ -805,14 +805,14 @@
   .whynow-title {
     font-size: 18px;
     font-weight: 700;
-    color: var(--white);
+    color: #bbb2fd;
     margin-bottom: 12px;
     letter-spacing: 0.3px;
   }
 
   .whynow-body {
     font-size: 14px;
-    color: var(--grey);
+    color: #ffffff;
     line-height: 1.7;
   }
 
@@ -856,20 +856,20 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--orange);
+    color: #3d2f8c;
     margin-bottom: 8px;
   }
 
   .team-name {
     font-size: 18px;
     font-weight: 700;
-    color: var(--white);
+    color: #bbb2fd;
     margin-bottom: 12px;
   }
 
   .team-bio {
     font-size: 13px;
-    color: var(--grey);
+    color: #ffffff;
     line-height: 1.65;
   }
 
@@ -914,16 +914,16 @@
   .raise-box {
     max-width: 860px;
     margin: 0 auto;
-    border: 1px solid rgba(245,131,30,0.3);
+    border: 1px solid rgba(61,47,140,0.3);
     padding: 64px;
     position: relative;
-    background: linear-gradient(135deg, rgba(245,131,30,0.04), transparent);
+    background: linear-gradient(135deg, rgba(61,47,140,0.04), transparent);
   }
   .raise-box::before, .raise-box::after {
     content: '';
     position: absolute;
     width: 20px; height: 20px;
-    border-color: var(--orange);
+    border-color: #3d2f8c;
     border-style: solid;
   }
   .raise-box::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
@@ -933,18 +933,18 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(64px, 9vw, 120px);
     letter-spacing: 3px;
-    color: var(--white);
+    color: #bbb2fd;
     line-height: 1;
     margin-bottom: 8px;
   }
 
   .raise-desc {
     font-size: 16px;
-    color: var(--grey);
+    color: #ffffff;
     margin-bottom: 48px;
     letter-spacing: 1px;
   }
-  .raise-desc span { color: var(--orange); margin: 0 8px; }
+  .raise-desc span { color: #3d2f8c; margin: 0 8px; }
 
   .raise-terms {
     display: grid;
@@ -963,13 +963,13 @@
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--grey);
+    color: #bbb2fd;
     margin-bottom: 8px;
   }
   .raise-term-val {
     font-size: 20px;
     font-weight: 700;
-    color: var(--white);
+    color: #bbb2fd;
   }
 
   .raise-milestones {
@@ -989,14 +989,14 @@
   .milestone-dot {
     width: 8px;
     height: 8px;
-    background: var(--orange);
+    background: #3d2f8c;
     border-radius: 50%;
     margin-top: 7px;
     flex-shrink: 0;
   }
   .milestone-text {
     font-size: 14px;
-    color: var(--grey-light);
+    color: #ffffff;
     line-height: 1.5;
   }
 
@@ -1025,7 +1025,7 @@
   }
   .footer-logo-mark {
     width: 28px; height: 28px;
-    background: var(--orange);
+    background: #3d2f8c;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
     flex-shrink: 0;
   }
@@ -1033,16 +1033,16 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 18px;
     letter-spacing: 2px;
-    color: var(--white);
+    color: #bbb2fd;
   }
-  .footer-company span { color: var(--orange); }
+  .footer-company span { color: #3d2f8c; }
 
   .footer-center {
     font-size: 13px;
     color: var(--grey);
     text-align: center;
   }
-  .footer-center a { color: var(--orange); text-decoration: none; }
+  .footer-center a { color: #3d2f8c; text-decoration: none; }
 
   .footer-right { font-size: 12px; color: rgba(120,160,190,0.4); text-align: right; }
 
@@ -1089,23 +1089,23 @@
   }
   .gate-logo-mark {
     width: 40px; height: 40px;
-    background: var(--orange);
+    background: #3d2f8c;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
   }
   .gate-logo-text {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 26px;
     letter-spacing: 3px;
-    color: var(--white);
+    color: #bbb2fd;
   }
-  .gate-logo-text span { color: var(--orange); }
+  .gate-logo-text span { color: #3d2f8c; }
 
   .gate-label {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--grey);
+    color: #bbb2fd;
     margin-bottom: 32px;
   }
 
@@ -1113,12 +1113,12 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 36px;
     letter-spacing: 2px;
-    color: var(--white);
+    color: #bbb2fd;
     margin-bottom: 8px;
   }
   .gate-subtitle {
     font-size: 14px;
-    color: var(--grey);
+    color: #ffffff;
     margin-bottom: 40px;
     line-height: 1.6;
   }
@@ -1133,7 +1133,7 @@
     background: var(--navy-mid);
     border: 1px solid rgba(27,94,245,0.25);
     border-radius: 2px;
-    color: var(--white);
+    color: #ffffff;
     font-family: 'Outfit', sans-serif;
     font-size: 16px;
     letter-spacing: 2px;
@@ -1175,7 +1175,7 @@
   .gate-btn {
     width: 100%;
     padding: 18px;
-    background: var(--orange);
+    background: #3d2f8c;
     border: none;
     border-radius: 2px;
     color: var(--white);
@@ -1187,7 +1187,7 @@
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
   }
-  .gate-btn:hover { background: var(--orange-dim); transform: translateY(-1px); }
+  .gate-btn:hover { background: #2d1e6c; transform: translateY(-1px); }
   .gate-btn:active { transform: translateY(0); }
 
   .gate-footer {
@@ -1353,7 +1353,7 @@
       <div class="diagram-layer"><span>NEAR SPACE</span><span class="dlayer-label">Weather balloons</span><span class="dlayer-alt">20–100km</span></div>
       <div class="diagram-layer haps">
         <span>▶ HAPS ZONE</span>
-        <span class="dlayer-label" style="color:var(--orange);font-weight:700">Astrato Operates Here</span>
+        <span class="dlayer-label" style="color:#3d2f8c;font-weight:700">Astrato Operates Here</span>
         <span class="dlayer-alt">18–50km</span>
       </div>
       <div class="diagram-layer"><span>UPPER ATM</span><span class="dlayer-label">Commercial jets</span><span class="dlayer-alt">10–18km</span></div>
@@ -1571,8 +1571,8 @@
   <rect x="925" y="287" width="8" height="6" rx="2" fill="#1a2a3a"/>
 
   <!-- Orange nav light on wingtip -->
-  <circle cx="83" cy="267" r="3" fill="#F5831E" filter="url(#glow)" opacity="0.9"/>
-  <circle cx="1117" cy="267" r="3" fill="#F5831E" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="83" cy="267" r="3" fill="#3d2f8c" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="1117" cy="267" r="3" fill="#3d2f8c" filter="url(#glow)" opacity="0.9"/>
 
   <!-- Faint contrail / exhaust behind motors -->
   <g opacity="0.06">
